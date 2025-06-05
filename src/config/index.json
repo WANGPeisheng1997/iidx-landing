@@ -1,7 +1,7 @@
 {
   "company": {
     "name": "TTW PRO LEAGUE",
-    "logo": "/assets/images/logo.png"
+    "logo": "/assets/images/TPLS2_logo.png"
   },
   "navigation": [
     {
@@ -30,17 +30,21 @@
     "href": "#registration"
   },
   "mainHero": {
-    "title": "TTW PRO LEAGUE",
-    "subtitle": "beatmania IIDX 专业比赛",
+    "title": "",
+    "subtitle": "",
     "description": "TPL是一个专业的beatmania IIDX团队赛事，采用类似BPL的赛制，为玩家提供高水平的竞技平台。比赛分为16人制和32人制两种模式，包含一对一和二对二的Arena Battle。",
-    "img": "/assets/images/happyTeam.jpeg",
+    "img": "/assets/images/TPLS2_logo_带背景.png",
     "primaryAction": {
       "text": "查看规则",
       "href": "#rules"
     },
     "secondaryAction": {
-      "text": "联系主办方",
-      "href": "mailto:tpl@example.com?subject=TPL比赛咨询"
+      "text": "我要报名",
+      "href": "#registration"
+    },
+    "tertiaryAction": {
+      "text": "我要观赛",
+      "href": "https://live.example.com"
     }
   },
   "registration": {
@@ -50,16 +54,17 @@
       {
         "type": "QQ群",
         "content": "加入QQ群：123456789",
-        "image": "/assets/images/logo.png"
+        "image": "/assets/images/TPLS2_宣传小图1.png"
       },
       {
         "type": "微信群",
         "content": "扫描微信二维码加入报名群",
-        "image": "/assets/images/logo.png"
+        "image": "/assets/images/TPLS2_宣传小图2.png"
       },
       {
         "type": "在线表单",
         "content": "填写在线报名表单",
+        "image": "/assets/images/TPLS2_宣传小图3.png",
         "link": "https://forms.example.com/tpl-registration"
       }
     ],

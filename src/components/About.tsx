@@ -3,9 +3,16 @@ import React from 'react';
 import config from '../config/index.json';
 
 const About = () => {
-  const { company, about } = config;
+  const { company } = config;
   const { logo, name: companyName } = company;
-  const { socialMedia, sections } = about;
+  const socialMedia = {
+    github: 'https://github.com',
+    linkedin: 'https://linkedin.com',
+  };
+  const sections = [
+    { name: 'About', href: '#about' },
+    { name: 'Contact', href: '#contact' },
+  ];
 
   return (
     <div
@@ -62,7 +69,7 @@ const About = () => {
           </a>
           <a
             aria-label="twitter"
-            href={socialMedia.twitter}
+            href="https://twitter.com"
             target="_blank"
             rel="noreferrer"
           >
