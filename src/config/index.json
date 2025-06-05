@@ -5,46 +5,46 @@
   },
   "navigation": [
     {
-      "name": "报名方式",
-      "href": "registration"
+      "name": "赛事详情",
+      "href": "event-details"
     },
     {
-      "name": "规则",
+      "name": "赛事规则",
       "href": "rules"
-    },
-    {
-      "name": "工作人员",
-      "href": "staff"
     },
     {
       "name": "抽签结果",
       "href": "draw"
     },
     {
-      "name": "比赛结果",
+      "name": "赛事结果",
       "href": "results"
+    },
+    {
+      "name": "赛事STAFF",
+      "href": "staff"
     }
   ],
   "callToAction": {
     "text": "立即报名",
-    "href": "#registration"
+    "href": "#registration-image"
   },
   "mainHero": {
     "title": "",
     "subtitle": "",
-    "description": "TPL是一个专业的beatmania IIDX团队赛事，采用类似BPL的赛制，为玩家提供高水平的竞技平台。比赛分为16人制和32人制两种模式，包含一对一和二对二的Arena Battle。",
-    "img": "/assets/images/TPLS2_logo_带背景.png",
+    "description": "TTW PRO LEAGUE (TPL) 是一项BEMANI系列的大型团队赛事，\n自2024年起由 天天玩x秋葉原日系动漫游戏中心 赞助并在此举办，\n旨在为玩家提供高水平的竞技平台，现已设立beatmania IIDX部门。",
+    "img": "/assets/images/TPLS2_logo.png",
     "primaryAction": {
       "text": "查看规则",
       "href": "#rules"
     },
     "secondaryAction": {
       "text": "我要报名",
-      "href": "#registration"
+      "href": "#registration-image"
     },
     "tertiaryAction": {
       "text": "我要观赛",
-      "href": "https://live.example.com"
+      "href": "#viewing-image"
     }
   },
   "registration": {
@@ -76,8 +76,100 @@
     ]
   },
   "rules": {
-    "title": "比赛规则",
-    "subtitle": "TPL DP团队赛流程详情",
+    "title": "赛事规则",
+    "subtitle": "",
+    "sp_sections": [
+      {
+        "title": "Part.1 主要步骤（按时间顺序）",
+        "content": "1. 预选赛报名和分数更新截止之后，根据所有参赛选手的成绩和六维图，按最高分选出8名大将，平均分配至4支队伍。\n2. 从每支队伍的两名大将中选出一位队长，共计四位。四位队长和赛事主办方进行协商，确定选人会议时间。\n3. 选人会议上需要确定的内容：\n(1) 每支队伍的所有参赛选手\n(2) 第一轮比赛的对战安排\n(3) 第一、第二轮比赛每一局的课题\n(4) ...（待补充）",
+        "note": "补充概念：一轮比赛、一场比赛和一局比赛：一局比赛指两位选手互相选曲进行完成后的一整场BPL Battle比赛。一场比赛则是指两支队伍从头至尾进行的8局比赛。一轮比赛是对4进2、2进1这样轮次的称呼。"
+      },
+      {
+        "title": "Part.2 团队赛赛制（32人）",
+        "content": "团队赛的赛制近似于BPL赛制。在一场比赛中，每支队伍将和对手队伍共进行8局BO2的BPL Battle以及Arena Battle比赛，选曲由双方选手各选一曲。双方队伍在每一场比赛派出的选手不得重复，即每位选手都需要出战并且只能出战一场比赛。每场团队赛由6局一对一的BPL Battle和2局二对二的Arena Battle比赛组成。",
+        "sp_schedule": [
+          {
+            "match": "1st Match",
+            "level": "LEVEL 8~10",
+            "format": "1 VS 1",
+            "points": "2 pt",
+            "pool": "于选人会议中随机抽选（A池）"
+          },
+          {
+            "match": "2nd Match",
+            "level": "LEVEL 8~10",
+            "format": "1 VS 1",
+            "points": "2 pt",
+            "pool": "于选人会议中随机抽选（A池）"
+          },
+          {
+            "match": "3rd Match",
+            "level": "LEVEL 10~11",
+            "format": "2 VS 2",
+            "points": "第一名3pt 第二名2pt",
+            "pool": "于选人会议中随机抽选（B池）"
+          },
+          {
+            "match": "4th Match",
+            "level": "LEVEL 11",
+            "format": "1 VS 1",
+            "points": "3 pt",
+            "pool": "于选人会议中随机抽选（A池）"
+          },
+          {
+            "match": "5th Match",
+            "level": "LEVEL 11",
+            "format": "1 VS 1",
+            "points": "3 pt",
+            "pool": "于选人会议中随机抽选（B池）"
+          },
+          {
+            "match": "6th Match",
+            "level": "LEVEL 11~12",
+            "format": "2 VS 2",
+            "points": "第一名4pt 第二名3pt",
+            "pool": "于选人会议中随机抽选（A池）"
+          },
+          {
+            "match": "7th Match",
+            "level": "LEVEL 12",
+            "format": "1 VS 1",
+            "points": "4 pt",
+            "pool": "于选人会议中随机抽选（A池）"
+          },
+          {
+            "match": "8th Match",
+            "level": "LEVEL 12",
+            "format": "1 VS 1",
+            "points": "5 pt",
+            "pool": "于选人会议中随机抽选（A池）"
+          }
+        ]
+      },
+      {
+        "title": "课题抽选规则",
+        "content": "课题共六组，即NOTES/CHORD/PEAK/CHARGE/SCRATCH/SOF-LAN。在表格中可以看出，一对一的比赛课题将在一个池子（A池）中抽选，而二对二的比赛将在另一个池子（B池）中抽选。\n因为每场比赛中，一对一的比赛共有六局，所以这六局比赛的课题将随机抽选，不可重复，刚好每个课题出现一次。二对二的比赛共有两局，课题也随机抽选，只需保证这两局的课题不相同即可。"
+      },
+      {
+        "title": "计算每首曲目各队得分的规则",
+        "content": "对于一对一局次（即第1、2、4、5、7、8局）每一首歌的比赛结果，如果一方胜利，就给这方所在的队伍加上对应的积分，输的一方队伍得0分；如果平局，则双方队伍均获得该局对应积分。\n\n对于二对二局次（即第3、6局）每一首歌的比赛结果，每名队员独立计算自己将获得的分数，然后贡献给自己所在队伍，其中第一、第二名的分数在表格中体现，第三、第四名得0分；如果平局，则按照常规比赛处理相同成绩的方式进行处理。\n\n8局比赛结束之后，积分更高的队伍获胜，进入到下一轮（或获得冠军）。如果出现同分情况，则两边队伍分别选出一名选手进行加赛。加赛的赛制为1场BO3的BPL BATTLE，双方各选一曲，等级和流派不限。如果平手则由CPU随机抽选课题作为决胜曲。"
+      },
+      {
+        "title": "Part.3 选人会议",
+        "content": "选人会议的模式近似BPL Draft会议的选人模式。每个队伍的队长都需要从参赛选手池中选出六位队员来填满自己的队伍。选人会议将一共持续六轮，每一轮的具体流程如下：",
+        "details": [
+          "一轮选人开始后，所有队长都有3分钟（可商议）的时间来参考数据库进行选择。",
+          "3分钟结束后4位队长公布自己选择的选手。如果该选择在场上不重复，则这名选手自动进入该队成为队员。",
+          "若重复，则选择重复的队长进行抽签。抽中的队长获得该名队员，未中标的队长重新在选手池中选择其他队员。",
+          "六轮选人结束之后，所有队伍都应该拥有8位选手。"
+        ]
+      },
+      {
+        "title": "选曲范围",
+        "content": "截止20250605更新前所有的现行AC: beatmania IIDX 32 Pinky Crush曲库中的所有谱面（包括HYPER和NORMAL）",
+        "link": "https://ikagadeshitaka.sakura.ne.jp/iidx/existInGame.php?game=33#32"
+      }
+    ],
     "sections": [
       {
         "title": "Part.1 课题曲与配对（16人制）",
@@ -205,130 +297,105 @@
       },
       {
         "title": "选曲范围",
-        "content": "截止20240704更新前所有的现行AC EPOLIS曲库中的所有谱面（包括HYPER和NORMAL）",
-        "link": "https://ikagadeshitaka.sakura.ne.jp/iidx/existInGame.php?game=32#31"
+        "content": "截止20250605更新前所有的现行AC: beatmania IIDX 32 Pinky Crush曲库中的所有谱面（包括HYPER和NORMAL）",
+        "link": "https://ikagadeshitaka.sakura.ne.jp/iidx/existInGame.php?game=33#32"
       }
     ]
   },
   "staff": {
-    "title": "工作人员列表",
-    "members": [
+    "title": "赛事STAFF",
+    "groups": [
       {
-        "name": "主办方A",
-        "role": "赛事总监",
-        "contact": "organizer1@example.com"
+        "name": "管理组",
+        "members": [{ "name": "Lion", "role": "主催、宣传、场地沟通" }]
       },
       {
-        "name": "主办方B",
-        "role": "技术负责人",
-        "contact": "tech@example.com"
+        "name": "主持组",
+        "members": [
+          { "name": "君他", "role": "SP赛事主持人" },
+          { "name": "骇浪", "role": "DP赛事主持人" },
+          { "name": "阿斌", "role": "赛事解说" },
+          { "name": "大炮", "role": "赛事解说" }
+        ]
       },
-      { "name": "裁判A", "role": "主裁判", "contact": "referee1@example.com" },
-      { "name": "裁判B", "role": "副裁判", "contact": "referee2@example.com" },
       {
-        "name": "工作人员C",
-        "role": "直播负责人",
-        "contact": "stream@example.com"
+        "name": "摄像组",
+        "members": [
+          { "name": "四维", "role": "主机位摄像" },
+          { "name": "小石", "role": "GOPRO摄像" }
+        ]
       },
-      { "name": "工作人员D", "role": "数据统计", "contact": "data@example.com" }
+      {
+        "name": "导播组",
+        "members": [
+          { "name": "卢老师", "role": "导播" },
+          { "name": "ERU", "role": "导播" }
+        ]
+      },
+      {
+        "name": "后勤组",
+        "members": [{ "name": "CLOUD", "role": "物资管理" }]
+      },
+      {
+        "name": "引导组",
+        "members": [
+          { "name": "紫菜", "role": "选手引导" },
+          { "name": "色图", "role": "选手引导" }
+        ]
+      },
+      {
+        "name": "计分组",
+        "members": [
+          { "name": "ERU", "role": "赛事成绩录入" },
+          { "name": "姑姑", "role": "赛事成绩录入" }
+        ]
+      },
+      {
+        "name": "技术组",
+        "members": [{ "name": "WENHUO", "role": "技术支持" }]
+      },
+      {
+        "name": "赛程组",
+        "members": [
+          { "name": "小新", "role": "SP预选赛课题曲" },
+          { "name": "骇浪", "role": "DP预选赛课题曲" },
+          { "name": "丁同学", "role": "团队赛赛程" }
+        ]
+      }
     ]
   },
   "draw": {
     "title": "抽签结果",
     "teams": [
       {
-        "name": "Team A",
-        "members": [
-          "选手A1",
-          "选手A2",
-          "选手A3",
-          "选手A4",
-          "选手A5",
-          "选手A6",
-          "选手A7",
-          "选手A8"
-        ]
+        "name": "队伍A",
+        "members": ["选手1", "选手2", "选手3", "选手4"]
       },
       {
-        "name": "Team B",
-        "members": [
-          "选手B1",
-          "选手B2",
-          "选手B3",
-          "选手B4",
-          "选手B5",
-          "选手B6",
-          "选手B7",
-          "选手B8"
-        ]
-      },
-      {
-        "name": "Team C",
-        "members": [
-          "选手C1",
-          "选手C2",
-          "选手C3",
-          "选手C4",
-          "选手C5",
-          "选手C6",
-          "选手C7",
-          "选手C8"
-        ]
-      },
-      {
-        "name": "Team D",
-        "members": [
-          "选手D1",
-          "选手D2",
-          "选手D3",
-          "选手D4",
-          "选手D5",
-          "选手D6",
-          "选手D7",
-          "选手D8"
-        ]
+        "name": "队伍B",
+        "members": ["选手5", "选手6", "选手7", "选手8"]
       }
     ],
     "brackets": [
       {
         "round": "半决赛",
-        "match1": "Team A vs Team B",
-        "match2": "Team C vs Team D"
-      },
-      { "round": "决赛", "match1": "获胜队伍 vs 获胜队伍", "match2": "" }
+        "match1": "队伍A vs 队伍B"
+      }
     ]
   },
   "results": {
-    "title": "比赛结果",
+    "title": "赛事结果",
+    "champion": "队伍A",
     "matches": [
       {
-        "round": "半决赛",
-        "teamA": "Team A",
-        "teamB": "Team B",
-        "scoreA": 18,
-        "scoreB": 15,
-        "winner": "Team A",
-        "date": "2024-01-15"
-      },
-      {
-        "round": "半决赛",
-        "teamA": "Team C",
-        "teamB": "Team D",
-        "scoreA": 20,
-        "scoreB": 13,
-        "winner": "Team C",
-        "date": "2024-01-15"
-      },
-      {
         "round": "决赛",
-        "teamA": "Team A",
-        "teamB": "Team C",
-        "scoreA": 22,
-        "scoreB": 19,
-        "winner": "Team A",
-        "date": "2024-01-22"
+        "teamA": "队伍A",
+        "teamB": "队伍B",
+        "scoreA": 4,
+        "scoreB": 2,
+        "winner": "队伍A",
+        "date": "2024-12-01"
       }
-    ],
-    "champion": "Team A"
+    ]
   }
 }

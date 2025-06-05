@@ -19,7 +19,13 @@ const Canvas: FC = () => {
   return (
     <>
       <CanvasContext.Provider value={{ context }}>
-        <canvas id="canvas" ref={canvasRef} width={width} height={220}></canvas>
+        <canvas
+          id="canvas"
+          ref={canvasRef}
+          width={width}
+          height={220}
+          className="w-full h-full"
+        ></canvas>
         <Wave />
       </CanvasContext.Provider>
     </>

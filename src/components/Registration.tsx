@@ -21,49 +21,7 @@ const Registration = () => {
           </div>
         </div>
 
-        <div className="mt-8 sm:mt-12 grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-3">
-          {registration.methods.map((method, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-lg p-4 sm:p-6"
-            >
-              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">
-                {method.type}
-              </h3>
-              <p className="text-gray-600 mb-4 text-sm sm:text-base">
-                {method.content}
-              </p>
-
-              {method.image && (
-                <div className="flex justify-center mb-4">
-                  <img
-                    src={method.image}
-                    alt={method.type}
-                    className="w-32 h-32 sm:w-48 sm:h-48 object-contain border border-gray-300 rounded"
-                    onError={(e) => {
-                      e.currentTarget.src = '/assets/images/logo.png';
-                    }}
-                  />
-                </div>
-              )}
-
-              {method.link && (
-                <div className="text-center">
-                  <a
-                    href={method.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block bg-blue-600 text-white px-4 sm:px-6 py-2 rounded-md hover:bg-blue-700 transition-colors text-sm sm:text-base"
-                  >
-                    前往填写
-                  </a>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-8 sm:mt-12 bg-white rounded-lg shadow-lg p-4 sm:p-6">
+        <div className="mt-8 sm:mt-12 bg-white rounded-lg shadow-lg p-4 sm:p-6 max-w-4xl mx-auto">
           <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">
             报名要求
           </h3>
