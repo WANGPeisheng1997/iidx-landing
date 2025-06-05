@@ -172,126 +172,174 @@
     ],
     "sections": [
       {
-        "title": "Part.1 课题曲与配对（16人制）",
-        "content": "团队赛报名截止之后，公布本次比赛的课题曲。课题曲共8首，分别为LEVEL 7,8,9,9,10,10,11,12。所有参赛选手需要游玩并提交成绩图，工作人员将记录EX分数和BP数。根据所有参赛选手的成绩，16名玩家将被两两配对，随机分成2支队伍，每支队伍各8人。"
+        "title": "赛事详情",
+        "content": "参赛人数：16\n报名截止日期：2025/x/x\n比赛时间：2025/8/10 10:00AM\n赛程：\n1. 报名截止后进入课题曲环节，每名参赛选手需游玩课题曲并提交成绩。\n2. 课题曲前四名的玩家自动成为两支队伍的队长与副队长，通过选人会议的方式，最终确定两支队伍，每支队伍各8名选手。\n3. 团队赛将进行10轮1v1的BPL Battle比赛，每名参赛选手获胜时将为自己队伍积累pt，最终pt更高的队伍成为本次比赛的获胜方。"
       },
       {
-        "title": "Part.2 团队赛赛制（16人）",
-        "content": "团队赛的赛制近似于BPL赛制。双方共进行8局BO2的BPL Battle比赛，选曲由双方选手各选一曲。双方队伍在每一场比赛派出的选手不得重复，即每位选手都需要出战并且只能出战一场比赛。",
+        "title": "课题曲",
+        "content": "报名截止后将公布DP课题曲。考虑到DP玩家群体水平差异相对较大，DP的课题曲将分为基础课题曲6首与附加课题曲4首。其中基础课题曲为LEVEL 7-11，附加课题曲难度为LEVEL 11-12；基础课题曲全体参赛选手均需要完成，附加课题曲仅用于确定6名大将，有大将战意向的玩家选择性参与。参赛选手游玩课题曲后需提交成绩图，工作人员将记录EX分数。课题曲环节截止后，每名参赛选手将被计算基础课题Rating和全课题Rating，其中全课题Rating的前六名自动成为大将，其余选手按照基础课题Rating取前十名，总共组成十六名参赛选手。",
+        "basic_songs": [
+          {
+            "level": "7",
+            "title": "Crank It",
+            "difficulty": "DPH",
+            "version": "HEROIC VERSE",
+            "bpm": "161",
+            "notes": "737"
+          },
+          {
+            "level": "8",
+            "title": "elemental bender feat. Kanae Asaba",
+            "difficulty": "DPA",
+            "version": "SINOBUZ",
+            "bpm": "135",
+            "notes": "846"
+          },
+          {
+            "level": "9",
+            "title": "黒紅掬い",
+            "difficulty": "DPA",
+            "version": "CAST HOUR",
+            "bpm": "104",
+            "notes": "1046"
+          },
+          {
+            "level": "10",
+            "title": "Umbral",
+            "difficulty": "DPA",
+            "version": "SINOBUZ",
+            "bpm": "138",
+            "notes": "1032"
+          },
+          {
+            "level": "10",
+            "title": "CaptivAte～裁き～ (SUBLIME TECHNO MIX)",
+            "difficulty": "DPA",
+            "version": "SIRIUS",
+            "bpm": "180",
+            "notes": "1151"
+          },
+          {
+            "level": "11",
+            "title": "Venom",
+            "difficulty": "DPA",
+            "version": "SINOBUZ",
+            "bpm": "190",
+            "notes": "1451"
+          }
+        ],
+        "additional_songs": [
+          {
+            "level": "11",
+            "title": "naughty girl@Queen's Palace",
+            "difficulty": "DPL",
+            "version": "EMPRESS",
+            "bpm": "145",
+            "notes": "1276"
+          },
+          {
+            "level": "12",
+            "title": "CODE:2",
+            "difficulty": "DPA",
+            "version": "EPOLIS",
+            "bpm": "155",
+            "notes": "1730"
+          },
+          {
+            "level": "12",
+            "title": "刃図羅",
+            "difficulty": "DPA",
+            "version": "SINOBUZ",
+            "bpm": "165",
+            "notes": "1790"
+          },
+          {
+            "level": "12",
+            "title": "Valanga",
+            "difficulty": "DPA",
+            "version": "tricoro",
+            "bpm": "186",
+            "notes": "1807"
+          }
+        ]
+      },
+      {
+        "title": "选人会议",
+        "content": "1. 课题曲第1、4名自动成为Team A的队长和副队长，第2、3名自动成为Team B的队长和副队长。\n2. 选人会议将一共持续六轮，每一轮两支队伍的队长需要分别从剩余的选手中挑选一名选手。如果两支队伍挑选的选手不同，则被挑选的选手直接加入对应队伍。否则，被挑选的选手将随机加入其中一支队伍，而另一支队伍重新挑选另一名选手加入自己的队伍。其中第一轮两支队伍只能在课题曲第5、6名的大将中挑选。\n3. 在六轮选人过后，最终确定两支队伍，每支队伍各8名选手。"
+      },
+      {
+        "title": "团队赛",
+        "content": "1. 团队赛的赛制近似于BPL赛制。双方共进行10局BO2的BPL Battle比赛，选曲由双方选手各选一曲。其中10局比赛分为8局正赛和2局附加赛。\n2. 双方队伍在每一场正赛派出的选手不得重复，即每位选手都需要出战并且只能出战一场正赛。\n3. 大将战和大将附加赛必须由课题曲前6名的大将出战，中坚战、先锋战和中坚附加赛则必须由非大将出战。",
         "schedule": [
           {
             "match": "先锋战 1st Match",
             "level": "LEVEL 6~8",
             "format": "EX分数",
-            "points": "2pt"
+            "points": "2pt",
+            "position": "先锋"
           },
           {
             "match": "先锋战 2nd Match",
-            "level": "LEVEL 6~8",
+            "level": "LEVEL 7~9",
             "format": "EX分数",
-            "points": "2pt"
+            "points": "2pt",
+            "position": "先锋"
           },
           {
             "match": "中坚战 3rd Match",
-            "level": "LEVEL 9~10",
+            "level": "LEVEL 8~10",
             "format": "EX分数",
-            "points": "3pt"
+            "points": "3pt",
+            "position": "中坚"
           },
           {
             "match": "中坚战 4th Match",
-            "level": "LEVEL 10~11",
-            "format": "BP数量",
-            "points": "3pt"
+            "level": "LEVEL 8~10",
+            "format": "EX分数",
+            "points": "3pt",
+            "position": "中坚"
           },
           {
             "match": "中坚战 5th Match",
-            "level": "LEVEL 11",
+            "level": "LEVEL 10~11",
             "format": "EX分数",
-            "points": "3pt"
+            "points": "3pt",
+            "position": "中坚"
+          },
+          {
+            "match": "中坚附加赛",
+            "level": "LEVEL 11",
+            "format": "BP数量",
+            "points": "3pt",
+            "position": "中坚"
           },
           {
             "match": "大将战 6th Match",
             "level": "LEVEL 11",
             "format": "EX分数",
-            "points": "4pt"
+            "points": "4pt",
+            "position": "大将"
           },
           {
             "match": "大将战 7th Match",
-            "level": "LEVEL 11~12",
-            "format": "BP数量",
-            "points": "4pt"
-          },
-          {
-            "match": "大将战 8th Match",
             "level": "LEVEL 12",
             "format": "EX分数",
-            "points": "4pt"
-          }
-        ]
-      },
-      {
-        "title": "Part.1 主要步骤（32人制）",
-        "content": "预选赛报名和分数更新截止之后，根据所有参赛选手的成绩和六维图，按最高分选出8名大将，平均分配至4支队伍。从每支队伍的两名大将中选出一位队长，共计四位。"
-      },
-      {
-        "title": "Part.2 团队赛赛制（32人）",
-        "content": "每支队伍将和对手队伍共进行8局BO2的BPL Battle以及Arena Battle比赛。每场团队赛由6局一对一的BPL Battle和2局二对二的Arena Battle比赛组成。",
-        "schedule32": [
-          {
-            "match": "1st Match",
-            "level": "LEVEL 8~10",
-            "format": "1 VS 1",
-            "points": "2 pt",
-            "pool": "A池"
+            "points": "4pt",
+            "position": "大将"
           },
           {
-            "match": "2nd Match",
-            "level": "LEVEL 8~10",
-            "format": "1 VS 1",
-            "points": "2 pt",
-            "pool": "A池"
-          },
-          {
-            "match": "3rd Match",
-            "level": "LEVEL 10~11",
-            "format": "2 VS 2",
-            "points": "第一名3pt 第二名2pt",
-            "pool": "B池"
-          },
-          {
-            "match": "4th Match",
-            "level": "LEVEL 11",
-            "format": "1 VS 1",
-            "points": "3 pt",
-            "pool": "A池"
-          },
-          {
-            "match": "5th Match",
-            "level": "LEVEL 11",
-            "format": "1 VS 1",
-            "points": "3 pt",
-            "pool": "B池"
-          },
-          {
-            "match": "6th Match",
-            "level": "LEVEL 11~12",
-            "format": "2 VS 2",
-            "points": "第一名4pt 第二名3pt",
-            "pool": "A池"
-          },
-          {
-            "match": "7th Match",
+            "match": "大将附加赛",
             "level": "LEVEL 12",
-            "format": "1 VS 1",
-            "points": "4 pt",
-            "pool": "A池"
+            "format": "BP数量",
+            "points": "4pt",
+            "position": "大将"
           },
           {
-            "match": "8th Match",
+            "match": "大将战 Final Match",
             "level": "LEVEL 12",
-            "format": "1 VS 1",
-            "points": "5 pt",
-            "pool": "A池"
+            "format": "EX分数",
+            "points": "4pt",
+            "position": "大将"
           }
         ]
       },

@@ -59,9 +59,29 @@ const Rules = () => {
                   <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
                     {section.title}
                   </h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed text-sm sm:text-base whitespace-pre-line">
-                    {section.content}
-                  </p>
+                  <div className="text-gray-600 mb-6 leading-loose text-sm sm:text-base space-y-2">
+                    {section.content.split('\n').map((line, lineIndex) => {
+                      if (line.includes('：')) {
+                        const [label, ...valueParts] = line.split('：');
+                        const value = valueParts.join('：');
+                        return (
+                          <div key={lineIndex} className="flex flex-wrap">
+                            <span className="font-semibold text-gray-800 mr-1">
+                              {label}：
+                            </span>
+                            <span className="font-normal">{value}</span>
+                          </div>
+                        );
+                      }
+                      return line ? (
+                        <p key={lineIndex} className="font-normal">
+                          {line}
+                        </p>
+                      ) : (
+                        <div key={lineIndex} className="h-2"></div>
+                      );
+                    })}
+                  </div>
 
                   {/* 注释说明 */}
                   {section.note && (
@@ -189,9 +209,29 @@ const Rules = () => {
                   <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
                     {section.title}
                   </h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed text-sm sm:text-base">
-                    {section.content}
-                  </p>
+                  <div className="text-gray-600 mb-6 leading-loose text-sm sm:text-base space-y-2">
+                    {section.content.split('\n').map((line, lineIndex) => {
+                      if (line.includes('：')) {
+                        const [label, ...valueParts] = line.split('：');
+                        const value = valueParts.join('：');
+                        return (
+                          <div key={lineIndex} className="flex flex-wrap">
+                            <span className="font-semibold text-gray-800 mr-1">
+                              {label}：
+                            </span>
+                            <span className="font-normal">{value}</span>
+                          </div>
+                        );
+                      }
+                      return line ? (
+                        <p key={lineIndex} className="font-normal">
+                          {line}
+                        </p>
+                      ) : (
+                        <div key={lineIndex} className="h-2"></div>
+                      );
+                    })}
+                  </div>
 
                   {/* 16人制比赛表格 */}
                   {section.schedule && (
@@ -204,6 +244,9 @@ const Rules = () => {
                           <table className="min-w-full divide-y divide-gray-200 bg-white">
                             <thead className="bg-gray-50">
                               <tr>
+                                <th className="px-2 sm:px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                  战位
+                                </th>
                                 <th className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                   局次
                                 </th>
@@ -219,35 +262,159 @@ const Rules = () => {
                               </tr>
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
-                              {section.schedule.map((match, idx) => (
-                                <tr
-                                  key={idx}
-                                  className={
-                                    idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+                              {(() => {
+                                let currentPosition = '';
+                                let positionRowCount = 0;
+                                let currentFormat = '';
+                                let formatRowCount = 0;
+                                let currentPoints = '';
+                                let pointsRowCount = 0;
+
+                                // 计算每个战位的行数
+                                const positionCounts = section.schedule.reduce(
+                                  (acc: Record<string, number>, match: any) => {
+                                    acc[match.position] =
+                                      (acc[match.position] || 0) + 1;
+                                    return acc;
+                                  },
+                                  {}
+                                );
+
+                                // 计算连续相同赛制的行数
+                                const formatCounts: number[] = [];
+                                let tempFormat = '';
+                                let tempCount = 0;
+                                section.schedule.forEach(
+                                  (match: any, idx: number) => {
+                                    if (match.format !== tempFormat) {
+                                      if (tempCount > 0) {
+                                        for (let i = 0; i < tempCount; i += 1) {
+                                          formatCounts.push(tempCount);
+                                        }
+                                      }
+                                      tempFormat = match.format;
+                                      tempCount = 1;
+                                    } else {
+                                      tempCount += 1;
+                                    }
+                                    if (idx === section.schedule.length - 1) {
+                                      for (let i = 0; i < tempCount; i += 1) {
+                                        formatCounts.push(tempCount);
+                                      }
+                                    }
                                   }
-                                >
-                                  <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm font-medium text-gray-900">
-                                    <div className="whitespace-normal sm:whitespace-nowrap">
-                                      {match.match}
-                                    </div>
-                                  </td>
-                                  <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-gray-500">
-                                    <div className="whitespace-normal sm:whitespace-nowrap">
-                                      {match.level}
-                                    </div>
-                                  </td>
-                                  <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-gray-500">
-                                    <div className="whitespace-normal sm:whitespace-nowrap">
-                                      {match.format}
-                                    </div>
-                                  </td>
-                                  <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-gray-500">
-                                    <div className="whitespace-normal sm:whitespace-nowrap">
-                                      {match.points}
-                                    </div>
-                                  </td>
-                                </tr>
-                              ))}
+                                );
+
+                                // 计算连续相同分数的行数
+                                const pointsCounts: number[] = [];
+                                let tempPoints = '';
+                                let tempPointsCount = 0;
+                                section.schedule.forEach(
+                                  (match: any, idx: number) => {
+                                    if (match.points !== tempPoints) {
+                                      if (tempPointsCount > 0) {
+                                        for (
+                                          let i = 0;
+                                          i < tempPointsCount;
+                                          i += 1
+                                        ) {
+                                          pointsCounts.push(tempPointsCount);
+                                        }
+                                      }
+                                      tempPoints = match.points;
+                                      tempPointsCount = 1;
+                                    } else {
+                                      tempPointsCount += 1;
+                                    }
+                                    if (idx === section.schedule.length - 1) {
+                                      for (
+                                        let i = 0;
+                                        i < tempPointsCount;
+                                        i += 1
+                                      ) {
+                                        pointsCounts.push(tempPointsCount);
+                                      }
+                                    }
+                                  }
+                                );
+
+                                return section.schedule.map(
+                                  (match: any, idx: number) => {
+                                    const shouldShowPosition =
+                                      match.position !== currentPosition;
+                                    const shouldShowFormat =
+                                      match.format !== currentFormat;
+                                    const shouldShowPoints =
+                                      match.points !== currentPoints;
+
+                                    if (shouldShowPosition) {
+                                      currentPosition = match.position;
+                                      positionRowCount =
+                                        positionCounts[match.position] || 0;
+                                    }
+
+                                    if (shouldShowFormat) {
+                                      currentFormat = match.format;
+                                      formatRowCount = formatCounts[idx] || 1;
+                                    }
+
+                                    if (shouldShowPoints) {
+                                      currentPoints = match.points;
+                                      pointsRowCount = pointsCounts[idx] || 1;
+                                    }
+
+                                    return (
+                                      <tr
+                                        key={idx}
+                                        className={
+                                          idx % 2 === 0
+                                            ? 'bg-white'
+                                            : 'bg-gray-50'
+                                        }
+                                      >
+                                        {shouldShowPosition && (
+                                          <td
+                                            rowSpan={positionRowCount}
+                                            className="px-2 sm:px-6 py-4 text-xs sm:text-sm font-bold text-center text-gray-900 rules-table-merged-cell"
+                                          >
+                                            {match.position}
+                                          </td>
+                                        )}
+                                        <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm font-medium text-gray-900">
+                                          <div className="whitespace-normal sm:whitespace-nowrap">
+                                            {match.match}
+                                          </div>
+                                        </td>
+                                        <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-gray-500">
+                                          <div className="whitespace-normal sm:whitespace-nowrap">
+                                            {match.level}
+                                          </div>
+                                        </td>
+                                        {shouldShowFormat && (
+                                          <td
+                                            rowSpan={formatRowCount}
+                                            className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-gray-500 text-center rules-table-merged-cell"
+                                          >
+                                            <div className="whitespace-normal sm:whitespace-nowrap">
+                                              {match.format}
+                                            </div>
+                                          </td>
+                                        )}
+                                        {shouldShowPoints && (
+                                          <td
+                                            rowSpan={pointsRowCount}
+                                            className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-gray-500 text-center rules-table-merged-cell"
+                                          >
+                                            <div className="whitespace-normal sm:whitespace-nowrap">
+                                              {match.points}
+                                            </div>
+                                          </td>
+                                        )}
+                                      </tr>
+                                    );
+                                  }
+                                );
+                              })()}
                             </tbody>
                           </table>
                         </div>
@@ -255,69 +422,143 @@ const Rules = () => {
                     </div>
                   )}
 
-                  {/* 32人制比赛表格 */}
-                  {section.schedule32 && (
+                  {/* 课题曲表格 */}
+                  {section.basic_songs && (
                     <div className="mt-6">
                       <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-4">
-                        比赛安排（32人制）
+                        基本课题曲
                       </h4>
                       <div className="overflow-x-auto -mx-4 sm:mx-0">
                         <div className="inline-block min-w-full align-middle">
                           <table className="min-w-full divide-y divide-gray-200 bg-white">
                             <thead className="bg-gray-50">
                               <tr>
-                                <th className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                  局次
+                                <th className="px-2 sm:px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                  等级
                                 </th>
                                 <th className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                  等级限制
+                                  歌名
                                 </th>
-                                <th className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                  赛制
+                                <th className="px-2 sm:px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                  难度
                                 </th>
-                                <th className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                  分数分配
+                                <th className="px-2 sm:px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                  版本
                                 </th>
-                                <th className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                  课题池
+                                <th className="px-2 sm:px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                  BPM
+                                </th>
+                                <th className="px-2 sm:px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                  物量
                                 </th>
                               </tr>
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
-                              {section.schedule32.map((match, idx) => (
-                                <tr
-                                  key={idx}
-                                  className={
-                                    idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
-                                  }
-                                >
-                                  <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm font-medium text-gray-900">
-                                    <div className="whitespace-normal sm:whitespace-nowrap">
-                                      {match.match}
-                                    </div>
-                                  </td>
-                                  <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-gray-500">
-                                    <div className="whitespace-normal sm:whitespace-nowrap">
-                                      {match.level}
-                                    </div>
-                                  </td>
-                                  <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-gray-500">
-                                    <div className="whitespace-normal sm:whitespace-nowrap">
-                                      {match.format}
-                                    </div>
-                                  </td>
-                                  <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-gray-500">
-                                    <div className="whitespace-normal sm:whitespace-nowrap">
-                                      {match.points}
-                                    </div>
-                                  </td>
-                                  <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-gray-500">
-                                    <div className="whitespace-normal sm:whitespace-nowrap">
-                                      {match.pool}
-                                    </div>
-                                  </td>
-                                </tr>
-                              ))}
+                              {section.basic_songs.map(
+                                (song: any, idx: number) => (
+                                  <tr
+                                    key={idx}
+                                    className={
+                                      idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+                                    }
+                                  >
+                                    <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm font-bold text-center text-gray-900">
+                                      {song.level}
+                                    </td>
+                                    <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm font-medium text-gray-900">
+                                      <div className="whitespace-normal sm:whitespace-nowrap">
+                                        {song.title}
+                                      </div>
+                                    </td>
+                                    <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-center text-gray-500">
+                                      {song.difficulty}
+                                    </td>
+                                    <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-center text-gray-500">
+                                      <div className="whitespace-normal sm:whitespace-nowrap">
+                                        {song.version}
+                                      </div>
+                                    </td>
+                                    <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-center text-gray-500">
+                                      {song.bpm}
+                                    </td>
+                                    <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-center text-gray-500">
+                                      {song.notes}
+                                    </td>
+                                  </tr>
+                                )
+                              )}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* 附加课题曲表格 */}
+                  {section.additional_songs && (
+                    <div className="mt-6">
+                      <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-4">
+                        附加课题曲
+                      </h4>
+                      <div className="overflow-x-auto -mx-4 sm:mx-0">
+                        <div className="inline-block min-w-full align-middle">
+                          <table className="min-w-full divide-y divide-gray-200 bg-white">
+                            <thead className="bg-gray-50">
+                              <tr>
+                                <th className="px-2 sm:px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                  等级
+                                </th>
+                                <th className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                  歌名
+                                </th>
+                                <th className="px-2 sm:px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                  难度
+                                </th>
+                                <th className="px-2 sm:px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                  版本
+                                </th>
+                                <th className="px-2 sm:px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                  BPM
+                                </th>
+                                <th className="px-2 sm:px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                  物量
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody className="bg-white divide-y divide-gray-200">
+                              {section.additional_songs.map(
+                                (song: any, idx: number) => (
+                                  <tr
+                                    key={idx}
+                                    className={
+                                      idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+                                    }
+                                  >
+                                    <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm font-bold text-center text-gray-900">
+                                      {song.level}
+                                    </td>
+                                    <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm font-medium text-gray-900">
+                                      <div className="whitespace-normal sm:whitespace-nowrap">
+                                        {song.title}
+                                      </div>
+                                    </td>
+                                    <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-center text-gray-500">
+                                      {song.difficulty}
+                                    </td>
+                                    <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-center text-gray-500">
+                                      <div className="whitespace-normal sm:whitespace-nowrap">
+                                        {song.version}
+                                      </div>
+                                    </td>
+                                    <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-center text-gray-500">
+                                      {song.bpm}
+                                    </td>
+                                    <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-center text-gray-500">
+                                      {song.notes}
+                                    </td>
+                                  </tr>
+                                )
+                              )}
                             </tbody>
                           </table>
                         </div>
