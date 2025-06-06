@@ -11,7 +11,8 @@
     "clean": "rimraf .next out",
     "lint": "next lint",
     "build-types": "tsc --noEmit --pretty",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "deploy": "./deploy.sh"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.1",
