@@ -241,127 +241,188 @@
       },
       {
         "title": "团队赛",
-        "content": "团队赛由两场半决赛和一场决赛构成。每场比赛包含八局，其中包括六局一对一的BPL Battle和两局二对二的Arena Battle。\n\n比赛规则：\n1. 每场比赛，每队共计出场10人次。双方队伍在每一局比赛派出的选手不得重复，即每位选手都需要出战并且只能出战一局比赛。\n2. 课题共六组，即NOTES/CHORD/PEAK/CHARGE/SCRATCH/SOF-LAN。一个谱面所属课题取决于其主要难点的类型，因此课题也可以被看作谱面难度倾向。这六种课题的含义如下，\nNOTES：物量平均密度较高的谱面\nCHORD：物量瞬间密度较高的谱面\nPEAK：以多押为主要难点的谱面\nCHARGE：以长押和BSS（转盘长押）为主要难点的谱面\nSCRATCH：盘子平均密度较高的谱面\nSOF-LAN：以在BPM变化过程中的局部谱面为主要难点的谱面\n通常来讲，一个谱面只会属于一个课题，但是同一首乐曲的不同谱面可能分属不同课题。\n3. 因为每场比赛中，一对一的比赛共有六局，所以这六局比赛的课题将随机抽选并保证每场比赛的六局一对一比赛不可重复，刚好每个课题出现一次。二对二的比赛共有两局，课题方面无限制。半决赛和决赛的课题均在选人会议环节抽取。\n4. 一对一局次（即第1、2、4、5、7、8局）使用BPL Battle模式，对战规则使用《beatmania IIDX 32 Pinky Crush》的BPL Battle模式规则。双方队伍在指定课题和指定等级限制下各选择一个谱面，两位选手要共同比赛这两张谱面。对于每一个谱面的比赛结果，如果一方胜利（即EX分数更高），就给这方所在的队伍加上对应的积分（积分即pt，如在A队伍选手在第2局中胜利，即给A队伍的总分加上2pt），输的一方队伍得0pt；如果平局（即双方EX分数相同），则双方队伍均获得该局对应积分。\n5. 二对二局次（即第3、6局）使用Arena Battle模式，对战规则使用《beatmania IIDX 32 Pinky Crush》的Arena Battle模式规则。双方队伍在指定课题和指定等级限制下各选择一个谱面，四位选手要共同比赛这两张谱面，每名队员独立计算自己将获得的分数，然后贡献给自己所在队伍，其中第一、第二名的分数在表格中体现，第三、第四名得0pt（例如3rd Match中甲、乙属于A队，丙、丁属于B队，在谱面一中甲获得第一名，乙获得第四名，丙获得第三名，丁获得第二名，则该谱面中甲为A队贡献3pt，丁为B队贡献2pt）；如果平局，则按照常规比赛处理相同成绩的方式进行处理（例如四名队员的EX分数分别为甲1000、乙1000、丙1000、丁997，则甲乙丙均为第一名，都为自己的团队贡献了第一名的分数，而丁独得第四名，贡献0pt）。\n6. 如果在一局比赛中，双方队伍选择的谱面相同，那么本局中第二个要比赛的谱面将在本局的等级限制和课题范围内随机抽取一个和其不同的。每支队伍在整个大赛过程（包括决赛和半决赛）中，不能主动重复选择同一个谱面。",
+        "content": "团队赛由两场半决赛和一场决赛构成。每场比赛包含八局，其中包括六局一对一的BPL Battle和两局二对二的Arena Battle。\n\n比赛规则：\n1. 每场比赛，每队共计出场10人次。双方队伍在每一局比赛派出的选手不得重复，即每位选手都需要出战并且只能出战一局比赛。\n2. 课题共六组，即NOTES/CHORD/PEAK/CHARGE/SCRATCH/SOF-LAN。一个谱面所属课题取决于其主要难点的类型，因此课题也可以被看作谱面难度倾向。这六种课题的含义见\"课题类型说明\"。通常来讲，一个谱面只会属于一个课题，但是同一首乐曲的不同谱面可能分属不同课题。\n3. 因为每场比赛中，一对一的比赛共有六局，所以这六局比赛的课题将随机抽选并保证每场比赛的六局一对一比赛不可重复，刚好每个课题出现一次。二对二的比赛共有两局，课题方面无限制。半决赛和决赛的课题均在选人会议环节抽取。\n4. 一对一局次（即第1、2、4、5、7、8局）使用BPL Battle模式，对战规则使用《beatmania IIDX 32 Pinky Crush》的BPL Battle模式规则。双方队伍在指定课题和指定等级限制下各选择一个谱面，两位选手要共同比赛这两张谱面。对于每一个谱面的比赛结果，如果一方胜利（即EX分数更高），就给这方所在的队伍加上对应的积分（积分即pts，如在A队伍选手在第2局中胜利，即给A队伍的总分加上2pts），输的一方队伍得0pts；如果平局（即双方EX分数相同），则双方队伍均获得该局对应积分。\n5. 二对二局次（即第3、6局）使用Arena Battle模式，对战规则使用《beatmania IIDX 32 Pinky Crush》的Arena Battle模式规则。双方队伍在指定课题和指定等级限制下各选择一个谱面，四位选手要共同比赛这两张谱面，每名队员独立计算自己将获得的分数，然后贡献给自己所在队伍，其中第一、第二名的分数在表格中体现，第三、第四名得0pts（例如3rd Match中甲、乙属于A队，丙、丁属于B队，在谱面一中甲获得第一名，乙获得第四名，丙获得第三名，丁获得第二名，则该谱面中甲为A队贡献3pts，丁为B队贡献2pts）；如果平局，则按照常规比赛处理相同成绩的方式进行处理（例如四名队员的EX分数分别为甲1000、乙1000、丙1000、丁997，则甲乙丙均为第一名，都为自己的团队贡献了第一名的分数，而丁独得第四名，贡献0pts）。\n6. 如果在一局比赛中，双方队伍选择的谱面相同，那么本局中第二个要比赛的谱面将在本局的等级限制和课题范围内随机抽取一个和其不同的。每支队伍在整个大赛过程（包括决赛和半决赛）中，不能主动重复选择同一个谱面。",
+        "course_types": [
+          {
+            "name": "NOTES",
+            "description": "物量平均密度较高的谱面"
+          },
+          {
+            "name": "CHORD",
+            "description": "物量瞬间密度较高的谱面"
+          },
+          {
+            "name": "PEAK",
+            "description": "以多押为主要难点的谱面"
+          },
+          {
+            "name": "CHARGE",
+            "description": "以长押和BSS（转盘长押）为主要难点的谱面"
+          },
+          {
+            "name": "SCRATCH",
+            "description": "盘子平均密度较高的谱面"
+          },
+          {
+            "name": "SOF-LAN",
+            "description": "以在BPM变化过程中的局部谱面为主要难点的谱面"
+          }
+        ],
         "team_schedule": [
           {
             "title": "半决赛",
+            "post_description": "八局比赛结束之后，累计pts更高的队伍获胜，获胜的队伍将进入决赛。如果两支队伍所获pts相同，那么将进行一局加赛，加赛为一对一的BO2 BPL Battle，由双方队长各指定一名本队队员进行比赛。其中前两个谱面为双方队伍各自选择，受上文中\"双方队伍选择谱面相同\"情形的抽取规则约束，受上文中\"不能主动重复选择同一个谱面\"的限制，但是不构成对之后决赛\"不能重复选曲\"的约束。\n\nLEGGENDARIA课题为全新课题，它表示所有LEGGENDARIA谱面构成的集合，它可能与前面六种常规课题相交。如这一场BPL Battle双方战平，则在LEGGENDARIA课题中随机抽取一个谱面，由这两名玩家比赛，Ex score高者获胜。如该谱面双方Ex score相同，则胜者由赛事主办方随机抽选得出。",
             "matches": [
               {
-                "match": "1st先锋战",
+                "position": "先锋战",
+                "match": "#1",
                 "level": "LEVEL 8~10",
                 "format": "1 VS 1",
-                "points": "2 pt",
+                "points": "2 pts",
                 "pool": "随机课题（不可重复）"
               },
               {
-                "match": "2nd先锋战",
+                "position": "先锋战",
+                "match": "#2",
                 "level": "LEVEL 8~10",
                 "format": "1 VS 1",
-                "points": "2 pt",
+                "points": "2 pts",
                 "pool": "随机课题（不可重复）"
               },
               {
-                "match": "3rd先锋战",
+                "position": "先锋战",
+                "match": "#3",
                 "level": "LEVEL 10~11",
                 "format": "2 VS 2",
-                "points": "第一名3pt 第二名2pt",
+                "points": "第一名3pts 第二名2pts",
                 "pool": "FREE（无限制）"
               },
               {
-                "match": "4th中坚战",
+                "position": "中坚战",
+                "match": "#4",
                 "level": "LEVEL 11",
                 "format": "1 VS 1",
-                "points": "3 pt",
+                "points": "3 pts",
                 "pool": "随机课题（不可重复）"
               },
               {
-                "match": "5th中坚战",
+                "position": "中坚战",
+                "match": "#5",
                 "level": "LEVEL 11",
                 "format": "1 VS 1",
-                "points": "3 pt",
+                "points": "3 pts",
                 "pool": "随机课题（不可重复）"
               },
               {
-                "match": "6th中坚战",
+                "position": "中坚战",
+                "match": "#6",
                 "level": "LEVEL 11~12",
                 "format": "2 VS 2",
-                "points": "第一名4pt 第二名3pt",
+                "points": "第一名4pts 第二名3pts",
                 "pool": "FREE（无限制）"
               },
               {
-                "match": "7th大将战",
+                "position": "大将战",
+                "match": "#7",
                 "level": "LEVEL 12",
                 "format": "1 VS 1",
-                "points": "4 pt",
+                "points": "4 pts",
                 "pool": "随机课题（不可重复）"
               },
               {
-                "match": "8th大将战",
+                "position": "大将战",
+                "match": "#8",
                 "level": "LEVEL 12",
                 "format": "1 VS 1",
-                "points": "5 pt",
+                "points": "5 pts",
                 "pool": "随机课题（不可重复）"
+              },
+              {
+                "position": "加赛(Opt.)",
+                "match": "#9",
+                "level": "无限制",
+                "format": "1 VS 1",
+                "points": "5 pts",
+                "pool": "LEGGENDARIA"
               }
             ]
           },
           {
             "title": "决赛",
+            "pre_description": "决赛和半决赛流程几乎完全相同，只有每局的等级限制和pts分配不同，以及加赛规则不同。整体难度略微提升，但pts的分配更加强调团队优势。请注意，在决赛中每支队伍也不能选择在半决赛中已选择过的谱面。",
+            "post_description": "和半决赛不同的是，决赛的加赛局如果平局，则需参加决赛的两名队员随机抽取LEGGENDARIA谱面直到有一方在某个谱面中胜出为止，该队员所在队伍即成为冠军。",
             "matches": [
               {
-                "match": "1st先锋战",
+                "position": "先锋战",
+                "match": "#1",
                 "level": "LEVEL 8~10",
                 "format": "1 VS 1",
-                "points": "3 pt",
+                "points": "3 pts",
                 "pool": "随机课题（不可重复）"
               },
               {
-                "match": "2nd先锋战",
+                "position": "先锋战",
+                "match": "#2",
                 "level": "LEVEL 8~10",
                 "format": "1 VS 1",
-                "points": "3 pt",
+                "points": "3 pts",
                 "pool": "随机课题（不可重复）"
               },
               {
-                "match": "3rd先锋战",
+                "position": "先锋战",
+                "match": "#3",
                 "level": "LEVEL 11",
                 "format": "2 VS 2",
-                "points": "第一名4pt 第二名3pt",
+                "points": "第一名4pts 第二名3pts",
                 "pool": "FREE（无限制）"
               },
               {
-                "match": "4th中坚战",
+                "position": "中坚战",
+                "match": "#4",
                 "level": "LEVEL 11",
                 "format": "1 VS 1",
-                "points": "4 pt",
+                "points": "4 pts",
                 "pool": "随机课题（不可重复）"
               },
               {
-                "match": "5th中坚战",
+                "position": "中坚战",
+                "match": "#5",
                 "level": "LEVEL 12",
                 "format": "1 VS 1",
-                "points": "4 pt",
+                "points": "4 pts",
                 "pool": "随机课题（不可重复）"
               },
               {
-                "match": "6th中坚战",
+                "position": "中坚战",
+                "match": "#6",
                 "level": "LEVEL 11",
                 "format": "2 VS 2",
-                "points": "第一名5pt 第二名4pt",
+                "points": "第一名5pts 第二名4pts",
                 "pool": "FREE（无限制）"
               },
               {
-                "match": "7th大将战",
+                "position": "大将战",
+                "match": "#7",
                 "level": "LEVEL 12",
                 "format": "1 VS 1",
-                "points": "5 pt",
+                "points": "5 pts",
                 "pool": "随机课题（不可重复）"
               },
               {
-                "match": "8th大将战",
+                "position": "大将战",
+                "match": "#8",
                 "level": "LEVEL 12",
                 "format": "1 VS 1",
-                "points": "6 pt",
+                "points": "6 pts",
                 "pool": "随机课题（不可重复）"
+              },
+              {
+                "position": "加赛(Opt.)",
+                "match": "#9",
+                "level": "无限制",
+                "format": "1 VS 1",
+                "points": "6 pts",
+                "pool": "LEGGENDARIA"
               }
             ]
           }

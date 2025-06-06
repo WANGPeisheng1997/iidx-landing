@@ -160,6 +160,50 @@ const Rules = () => {
                     </div>
                   )}
 
+                  {/* 课题类型表格 */}
+                  {section.course_types && (
+                    <div className="mt-6">
+                      <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-4">
+                        课题类型说明
+                      </h4>
+                      <div className="overflow-x-auto -mx-4 sm:mx-0">
+                        <div className="inline-block min-w-full align-middle">
+                          <table className="min-w-full divide-y divide-gray-200 bg-white">
+                            <thead className="bg-gray-50">
+                              <tr>
+                                <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                  课题名称
+                                </th>
+                                <th className="px-2 sm:px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                  课题说明
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody className="bg-white divide-y divide-gray-200">
+                              {section.course_types.map(
+                                (courseType: any, idx: number) => (
+                                  <tr
+                                    key={idx}
+                                    className={
+                                      idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+                                    }
+                                  >
+                                    <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm font-bold text-center text-gray-900">
+                                      {courseType.name}
+                                    </td>
+                                    <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-gray-600">
+                                      {courseType.description}
+                                    </td>
+                                  </tr>
+                                )
+                              )}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   {/* 团队赛赛制表格 */}
                   {section.team_schedule && (
                     <div className="mt-6 space-y-8">
@@ -167,68 +211,349 @@ const Rules = () => {
                         (schedule: any, scheduleIndex: number) => (
                           <div key={scheduleIndex}>
                             <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-4">
-                              {schedule.title}比赛安排
+                              {schedule.title}比赛流程
                             </h4>
+                            {schedule.pre_description && (
+                              <div className="text-gray-600 mb-6 leading-loose text-sm sm:text-base space-y-2 whitespace-pre-line">
+                                {schedule.pre_description
+                                  .split('\n')
+                                  .map((line: any, lineIndex: number) => {
+                                    if (line.includes('：')) {
+                                      const [label, ...valueParts] =
+                                        line.split('：');
+                                      const value = valueParts.join('：');
+                                      return (
+                                        <div
+                                          key={lineIndex}
+                                          className="flex flex-wrap"
+                                        >
+                                          <span className="font-semibold text-gray-800 mr-1">
+                                            {label}：
+                                          </span>
+                                          <span className="font-normal">
+                                            {value}
+                                          </span>
+                                        </div>
+                                      );
+                                    }
+                                    return line ? (
+                                      <p
+                                        key={lineIndex}
+                                        className="font-normal"
+                                      >
+                                        {line}
+                                      </p>
+                                    ) : (
+                                      <div
+                                        key={lineIndex}
+                                        className="h-2"
+                                      ></div>
+                                    );
+                                  })}
+                              </div>
+                            )}
                             <div className="overflow-x-auto -mx-4 sm:mx-0">
                               <div className="inline-block min-w-full align-middle">
                                 <table className="min-w-full divide-y divide-gray-200 bg-white">
                                   <thead className="bg-gray-50">
                                     <tr>
-                                      <th className="px-2 sm:px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                      <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                        战位
+                                      </th>
+                                      <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                                         局次
                                       </th>
-                                      <th className="px-2 sm:px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                      <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                                         等级限制
                                       </th>
-                                      <th className="px-2 sm:px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
-                                        赛制和分数分配
+                                      <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                        赛制
                                       </th>
-                                      <th className="px-2 sm:px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                      <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                        分数分配
+                                      </th>
+                                      <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                                         对战课题
                                       </th>
                                     </tr>
                                   </thead>
                                   <tbody className="bg-white divide-y divide-gray-200">
-                                    {schedule.matches.map(
-                                      (match: any, idx: number) => (
-                                        <tr
-                                          key={idx}
-                                          className={
-                                            idx % 2 === 0
-                                              ? 'bg-white'
-                                              : 'bg-gray-50'
+                                    {(() => {
+                                      let currentPosition = '';
+                                      let positionRowCount = 0;
+                                      let currentFormat = '';
+                                      let formatRowCount = 0;
+                                      let currentPoints = '';
+                                      let pointsRowCount = 0;
+                                      let currentPool = '';
+                                      let poolRowCount = 0;
+
+                                      // 计算每个战位的行数
+                                      const positionCounts =
+                                        schedule.matches.reduce(
+                                          (
+                                            acc: Record<string, number>,
+                                            match: any
+                                          ) => {
+                                            acc[match.position] =
+                                              (acc[match.position] || 0) + 1;
+                                            return acc;
+                                          },
+                                          {}
+                                        );
+
+                                      // 计算连续相同赛制的行数
+                                      const formatCounts: number[] = [];
+                                      let tempFormat = '';
+                                      let tempCount = 0;
+                                      schedule.matches.forEach(
+                                        (match: any, idx: number) => {
+                                          if (match.format !== tempFormat) {
+                                            if (tempCount > 0) {
+                                              for (
+                                                let i = 0;
+                                                i < tempCount;
+                                                i += 1
+                                              ) {
+                                                formatCounts.push(tempCount);
+                                              }
+                                            }
+                                            tempFormat = match.format;
+                                            tempCount = 1;
+                                          } else {
+                                            tempCount += 1;
                                           }
-                                        >
-                                          <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm font-medium text-gray-900">
-                                            <div className="whitespace-normal sm:whitespace-nowrap">
-                                              {match.match}
-                                            </div>
-                                          </td>
-                                          <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-gray-500">
-                                            <div className="whitespace-normal sm:whitespace-nowrap">
-                                              {match.level}
-                                            </div>
-                                          </td>
-                                          <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-gray-500">
-                                            <div className="whitespace-normal sm:whitespace-nowrap">
-                                              <div>{match.format}</div>
-                                              <div className="font-semibold text-blue-600">
-                                                {match.points}
-                                              </div>
-                                            </div>
-                                          </td>
-                                          <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-gray-500">
-                                            <div className="whitespace-normal sm:whitespace-nowrap">
-                                              {match.pool}
-                                            </div>
-                                          </td>
-                                        </tr>
-                                      )
-                                    )}
+                                          if (
+                                            idx ===
+                                            schedule.matches.length - 1
+                                          ) {
+                                            for (
+                                              let i = 0;
+                                              i < tempCount;
+                                              i += 1
+                                            ) {
+                                              formatCounts.push(tempCount);
+                                            }
+                                          }
+                                        }
+                                      );
+
+                                      // 计算连续相同分数的行数
+                                      const pointsCounts: number[] = [];
+                                      let tempPoints = '';
+                                      let tempPointsCount = 0;
+                                      schedule.matches.forEach(
+                                        (match: any, idx: number) => {
+                                          if (match.points !== tempPoints) {
+                                            if (tempPointsCount > 0) {
+                                              for (
+                                                let i = 0;
+                                                i < tempPointsCount;
+                                                i += 1
+                                              ) {
+                                                pointsCounts.push(
+                                                  tempPointsCount
+                                                );
+                                              }
+                                            }
+                                            tempPoints = match.points;
+                                            tempPointsCount = 1;
+                                          } else {
+                                            tempPointsCount += 1;
+                                          }
+                                          if (
+                                            idx ===
+                                            schedule.matches.length - 1
+                                          ) {
+                                            for (
+                                              let i = 0;
+                                              i < tempPointsCount;
+                                              i += 1
+                                            ) {
+                                              pointsCounts.push(
+                                                tempPointsCount
+                                              );
+                                            }
+                                          }
+                                        }
+                                      );
+
+                                      // 计算连续相同课题的行数
+                                      const poolCounts: number[] = [];
+                                      let tempPool = '';
+                                      let tempPoolCount = 0;
+                                      schedule.matches.forEach(
+                                        (match: any, idx: number) => {
+                                          if (match.pool !== tempPool) {
+                                            if (tempPoolCount > 0) {
+                                              for (
+                                                let i = 0;
+                                                i < tempPoolCount;
+                                                i += 1
+                                              ) {
+                                                poolCounts.push(tempPoolCount);
+                                              }
+                                            }
+                                            tempPool = match.pool;
+                                            tempPoolCount = 1;
+                                          } else {
+                                            tempPoolCount += 1;
+                                          }
+                                          if (
+                                            idx ===
+                                            schedule.matches.length - 1
+                                          ) {
+                                            for (
+                                              let i = 0;
+                                              i < tempPoolCount;
+                                              i += 1
+                                            ) {
+                                              poolCounts.push(tempPoolCount);
+                                            }
+                                          }
+                                        }
+                                      );
+
+                                      return schedule.matches.map(
+                                        (match: any, idx: number) => {
+                                          const shouldShowPosition =
+                                            match.position !== currentPosition;
+                                          const shouldShowFormat =
+                                            match.format !== currentFormat;
+                                          const shouldShowPoints =
+                                            match.points !== currentPoints;
+                                          const shouldShowPool =
+                                            match.pool !== currentPool;
+
+                                          if (shouldShowPosition) {
+                                            currentPosition = match.position;
+                                            positionRowCount =
+                                              positionCounts[match.position] ||
+                                              0;
+                                          }
+
+                                          if (shouldShowFormat) {
+                                            currentFormat = match.format;
+                                            formatRowCount =
+                                              formatCounts[idx] || 1;
+                                          }
+
+                                          if (shouldShowPoints) {
+                                            currentPoints = match.points;
+                                            pointsRowCount =
+                                              pointsCounts[idx] || 1;
+                                          }
+
+                                          if (shouldShowPool) {
+                                            currentPool = match.pool;
+                                            poolRowCount = poolCounts[idx] || 1;
+                                          }
+
+                                          return (
+                                            <tr
+                                              key={idx}
+                                              className={
+                                                idx % 2 === 0
+                                                  ? 'bg-white'
+                                                  : 'bg-gray-50'
+                                              }
+                                            >
+                                              {shouldShowPosition && (
+                                                <td
+                                                  rowSpan={positionRowCount}
+                                                  className="px-2 sm:px-6 py-4 text-xs sm:text-sm font-bold text-center text-gray-900 rules-table-merged-cell"
+                                                >
+                                                  {match.position}
+                                                </td>
+                                              )}
+                                              <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm font-medium text-gray-900 text-center">
+                                                <div className="whitespace-normal sm:whitespace-nowrap">
+                                                  {match.match}
+                                                </div>
+                                              </td>
+                                              <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-gray-500 text-center">
+                                                <div className="whitespace-normal sm:whitespace-nowrap">
+                                                  {match.level}
+                                                </div>
+                                              </td>
+                                              {shouldShowFormat && (
+                                                <td
+                                                  rowSpan={formatRowCount}
+                                                  className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-gray-500 text-center rules-table-merged-cell"
+                                                >
+                                                  <div className="whitespace-normal sm:whitespace-nowrap">
+                                                    {match.format}
+                                                  </div>
+                                                </td>
+                                              )}
+                                              {shouldShowPoints && (
+                                                <td
+                                                  rowSpan={pointsRowCount}
+                                                  className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-blue-600 text-center rules-table-merged-cell"
+                                                >
+                                                  <div className="whitespace-normal sm:whitespace-nowrap">
+                                                    {match.points}
+                                                  </div>
+                                                </td>
+                                              )}
+                                              {shouldShowPool && (
+                                                <td
+                                                  rowSpan={poolRowCount}
+                                                  className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-gray-500 text-center rules-table-merged-cell"
+                                                >
+                                                  <div className="whitespace-normal sm:whitespace-nowrap">
+                                                    {match.pool}
+                                                  </div>
+                                                </td>
+                                              )}
+                                            </tr>
+                                          );
+                                        }
+                                      );
+                                    })()}
                                   </tbody>
                                 </table>
                               </div>
                             </div>
+                            {schedule.post_description && (
+                              <div className="text-gray-600 mt-6 leading-loose text-sm sm:text-base space-y-2 whitespace-pre-line">
+                                {schedule.post_description
+                                  .split('\n')
+                                  .map((line: any, lineIndex: number) => {
+                                    if (line.includes('：')) {
+                                      const [label, ...valueParts] =
+                                        line.split('：');
+                                      const value = valueParts.join('：');
+                                      return (
+                                        <div
+                                          key={lineIndex}
+                                          className="flex flex-wrap"
+                                        >
+                                          <span className="font-semibold text-gray-800 mr-1">
+                                            {label}：
+                                          </span>
+                                          <span className="font-normal">
+                                            {value}
+                                          </span>
+                                        </div>
+                                      );
+                                    }
+                                    return line ? (
+                                      <p
+                                        key={lineIndex}
+                                        className="font-normal"
+                                      >
+                                        {line}
+                                      </p>
+                                    ) : (
+                                      <div
+                                        key={lineIndex}
+                                        className="h-2"
+                                      ></div>
+                                    );
+                                  })}
+                              </div>
+                            )}
                           </div>
                         )
                       )}
@@ -306,7 +631,7 @@ const Rules = () => {
                   {section.schedule && (
                     <div className="mt-6">
                       <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-4">
-                        比赛安排
+                        比赛流程
                       </h4>
                       <div className="overflow-x-auto -mx-4 sm:mx-0">
                         <div className="inline-block min-w-full align-middle">
