@@ -17,8 +17,8 @@ const Wave: FC = () => {
 
   useEffect(() => {
     if (!context) return;
-
     function render() {
+      if (!context) return;
       context.clearRect(0, 0, width, height);
       Object.entries(wavesRef.current).forEach(([, wave]) => {
         wave.draw(context, width, height, frequencyRef.current);
@@ -29,6 +29,7 @@ const Wave: FC = () => {
 
     render();
 
+    // eslint-disable-next-line consistent-return
     return () => {
       if (animationIdRef.current) {
         cancelAnimationFrame(animationIdRef.current);
