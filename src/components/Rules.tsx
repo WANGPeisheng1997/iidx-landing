@@ -1040,6 +1040,94 @@ const Rules = () => {
                         })}
                     </div>
 
+                    {/* SP课题曲表格 */}
+                    {section.sp_course_songs && (
+                      <div className="mt-6">
+                        <div className="overflow-x-auto -mx-4 sm:mx-0">
+                          <div className="inline-block min-w-full align-middle">
+                            <table className="min-w-full divide-y divide-gray-200 bg-white">
+                              <thead className="bg-gray-50">
+                                <tr>
+                                  <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                    等级
+                                  </th>
+                                  <th className="px-2 sm:px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                    歌名
+                                  </th>
+                                  <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                    难度
+                                  </th>
+                                  <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                    版本
+                                  </th>
+                                  <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                    BPM
+                                  </th>
+                                  <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                    物量
+                                  </th>
+                                  <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                    权重
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody className="bg-white divide-y divide-gray-200">
+                                {section.sp_course_songs.map(
+                                  (song: any, idx: number) => (
+                                    <tr
+                                      key={idx}
+                                      className={
+                                        idx % 2 === 0
+                                          ? 'bg-white'
+                                          : 'bg-gray-50'
+                                      }
+                                    >
+                                      <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm font-bold text-center text-gray-900">
+                                        {song.level}
+                                      </td>
+                                      <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm font-medium text-gray-900">
+                                        <div className="whitespace-normal sm:whitespace-nowrap">
+                                          {song.title}
+                                        </div>
+                                      </td>
+                                      <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-center text-gray-500">
+                                        {song.difficulty}
+                                      </td>
+                                      <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-center text-gray-500">
+                                        <div className="whitespace-normal sm:whitespace-nowrap">
+                                          {song.version}
+                                        </div>
+                                      </td>
+                                      <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-center text-gray-500">
+                                        {song.bpm}
+                                      </td>
+                                      <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-center text-gray-500">
+                                        {song.notes}
+                                      </td>
+                                      <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-center text-blue-600">
+                                        {song.weight}
+                                      </td>
+                                    </tr>
+                                  )
+                                )}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* 个人赛赛制图片 */}
+                    {section.image && (
+                      <div className="mt-6">
+                        <img
+                          src={section.image}
+                          alt={section.title}
+                          className="w-full h-auto rounded-lg shadow-md"
+                        />
+                      </div>
+                    )}
+
                     {/* 选曲范围链接 */}
                     {section.link && (
                       <div className="mt-6">
@@ -1067,81 +1155,6 @@ const Rules = () => {
                   </div>
                 )
               )}
-
-              {/* SP课题曲表格 - 个人赛也使用相同的课题曲 */}
-              <div className="mt-8">
-                <hr className="my-8 border-t border-gray-200" />
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
-                  SP课题曲
-                </h3>
-                <div className="overflow-x-auto -mx-4 sm:mx-0">
-                  <div className="inline-block min-w-full align-middle">
-                    <table className="min-w-full divide-y divide-gray-200 bg-white">
-                      <thead className="bg-gray-50">
-                        <tr>
-                          <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
-                            等级
-                          </th>
-                          <th className="px-2 sm:px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
-                            歌名
-                          </th>
-                          <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
-                            难度
-                          </th>
-                          <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
-                            版本
-                          </th>
-                          <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
-                            BPM
-                          </th>
-                          <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
-                            物量
-                          </th>
-                          <th className="px-2 sm:px-6 py-3 text-center text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
-                            权重
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody className="bg-white divide-y divide-gray-200">
-                        {rules.sp_course_songs.map((song: any, idx: number) => (
-                          <tr
-                            key={idx}
-                            className={
-                              idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
-                            }
-                          >
-                            <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm font-bold text-center text-gray-900">
-                              {song.level}
-                            </td>
-                            <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm font-medium text-gray-900">
-                              <div className="whitespace-normal sm:whitespace-nowrap">
-                                {song.title}
-                              </div>
-                            </td>
-                            <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-center text-gray-500">
-                              {song.difficulty}
-                            </td>
-                            <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-center text-gray-500">
-                              <div className="whitespace-normal sm:whitespace-nowrap">
-                                {song.version}
-                              </div>
-                            </td>
-                            <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-center text-gray-500">
-                              {song.bpm}
-                            </td>
-                            <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-center text-gray-500">
-                              {song.notes}
-                            </td>
-                            <td className="px-2 sm:px-6 py-4 text-xs sm:text-sm text-center text-blue-600">
-                              {song.weight}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
             </div>
           )}
         </div>
